@@ -1,0 +1,2 @@
+;;; Generated package description from dashboard-project-status.el  -*- no-byte-compile: t -*-
+(define-package "dashboard-project-status" "20190202.1354" "Display a git project status in a dashboard widget." '((emacs "24") (git "0.1.1") (dashboard "1.2.5")) :commit "7675c138e9df8fe2c626e7ba9bbb8b6717671a41" :authors '(("Jason Duncan" . "jasond496@msn.com")) :maintainer '("Jason Duncan" . "jasond496@msn.com") :url "https://github.com/functionreturnfunction/dashboard-project-status")

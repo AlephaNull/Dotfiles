@@ -1,0 +1,9 @@
+# GIMP action-history
+
+(history-item "file-export-as" 0)
+(history-item "file-quit" 3)
+(history-item "tools-crop" 0)
+(history-item "file-save" 0)
+(history-item "image-scale" 1)
+
+# end of action-history
