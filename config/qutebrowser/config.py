@@ -7,6 +7,9 @@
 # Or uncomment this line to load settings from config.py
 config.load_autoconfig(False)
 
+#Enable Dark Mode
+config.set("colors.webpage.darkmode.enabled", True)
+
 # Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
 # Type: Directory
