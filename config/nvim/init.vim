@@ -1,33 +1,10 @@
-"""""""""""""""""""""""""""
-" Plugins 
-"""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
+" Plugins are sourced in this file
+source $HOME/.config/nvim/vim-plug/plugins.vim
+""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'spolu/dwm.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'kien/ctrlp.vim'
-Plug 'frazrepo/vim-rainbow'
-Plug 'ryanoasis/vim-devicons'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'etdev/vim-hexcolor'
-Plug 'Townk/vim-autoclose'
-Plug 'tpope/vim-commentary'
-Plug 'Yggdroot/indentLine'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/nerdtree'
-Plug 'ervandew/supertab'
-Plug 'severin-lemaignan/vim-minimap'
-Plug 'djoshea/vim-autoread'
-Plug 'slim-template/vim-slim'
+" Require Lua
+lua require('config')
 
-call plug#end()
-"""""""""""""""""""""""""""
 
 " disable bells
 autocmd! GUIEnter * set vb t_vb=
@@ -44,12 +21,17 @@ set number
 " Show auto complete menus.
 set wildmenu
 
-" Make wildmenu behave like bash completion. Finding commands are so easy now.
+" Make wildmenu behave like bah completion. Finding commands are so easy now.
 set wildmode=list:longest
 
 " Enable mouse pointing
 set mouse=a
 
+let g:python3_host_prog = '/usr/bin/python3' " -------- Set python 3 provider
+
+let g:python_host_prog = '/usr/bin/python' " ---------- Set python 2 provider
+
+let g:AutoClosePreserveDotReg = 0
 " ALWAYS spaces
 set expandtab
 
@@ -66,6 +48,23 @@ set hidden
 "set autoread
 "au CursorHold * checktime
 
+" Lspsaga configs
+nnoremap <silent>K :Lspsaga hover_doc<CR>``
+inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
+" Completion\
+set completeopt=menuone,noinsert,noselect
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Telescope config 
+nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> \\ <cmd>Telescope buffers<cr>
+nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
+
 " Turn on syntax hightlighting.
 set syntax=on
 set nowrap
@@ -77,19 +76,49 @@ set nocindent
 set ttyfast
 set lazyredraw
 
+" For Python 
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" For js,html,css
+" au BufNewFile,BufRead *.js, *.html, *.css
+"     \ set tabstop=2
+"     \ set softtabstop=2
+"     \ set shiftwidth=2
+
+
+set encoding=utf-8
+
+" For SimpylFold 
+let g:SimpylFold_docstring_preview=1
+
+""For YouCompleteMe
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " Theme
 set background=dark
 set termguicolors
-colorscheme gruvbox
+colorscheme purify
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 
 " Airline
-set laststaus=2
+set laststatus=2
 let g:airline#extensions#tabline#enabled=1
-let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='ayu_dark'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#branch#enabled=1
-let g:airline_right_sep=''
+" let g:airline_right_sep=''
+let g:airline_right_sep=''
+let g:airline_left_sep=''
 " Indent Guides
 let g:indentLine_enabled=1
 let g:indentLine_color_term=235
@@ -105,8 +134,19 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 
-" Start Minimap
-" autocmd VimEnter * Minimap
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" Cycle tabs with Tab and Shift+Tab
+nnoremap<silent> <Tab> :bnext<CR>
+nnoremap<silent> <S-Tab> :bprevious<CR>
+
+
 
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
@@ -166,8 +206,7 @@ bprevious
 endif
 if btarget == bufnr('%')
 " Numbers of listed buffers which are not the target to be deleted.
-let blisted = filter(range(1, bufnr('$')), 'buflisted(v:val) && v:val !=
-btarget')
+let blisted = filter(range(1, bufnr('$')), 'buflisted(v:val) && v:val != btarget')
 " Listed, not target, and not displayed.
 let bhidden = filter(copy(blisted), 'bufwinnr(v:val) < 0')
 " Take the first buffer, if any (could be more intelligent).
@@ -219,8 +258,8 @@ vnoremap <silent> <C-k> :Commentary<cr>
 noremap <silent> <C-q> :Bclose!<CR>
 
 " Toggle Nerdtree
-noremap <silent> <C-f> ::NERDTreeToggle<CR>
+noremap <silent> <C-f> :NERDTreeToggle<CR>
 
 " Select all
 map <C-a> <esc>ggVG<CR>
-t
+
