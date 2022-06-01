@@ -12,7 +12,7 @@
 
 # Programs
 
-* Vim/Nvim - My vim/neovim config for programming with gruvbox theme      
+* Vim/Nvim - My vim/neovim config for programming    
    * Plugins:   
       * vim-fugitive
       * vim-airline/themes
@@ -22,17 +22,26 @@
       * vim-rainbow
       * vim-devicons (requires patched powerline font)
       * coc.nvim
-      * markdown-preview.nvim
       * vim-hexcolor 
       * vim-autoclose
       * vim-commentary
-      * indentline
-      * vim-nerdtree
-      * supertab
-      * vim-minimap
-      * vim-autoread
-      * vim-slim
-      * gruvbox   
+      * vim-nerdtree + nerdtree-tabs + nerdtree-syntax-highlighting   
+      * vim-vue 
+      * vim-vsnip
+      * vim-js
+      * vim-jsx-pretty
+      * vim-typescript-vim
+      * vim-prettier
+      * fzf
+      * nvim-lspconfig
+      * lspsaga
+      * treesitter
+      * nvim-completion
+      * popup
+      * plenary
+      * telescope
+      * vim-emoji
+      * purify theme   
 
 ![nvim-img](img/nvim.png)   
   
