@@ -43,7 +43,7 @@
       * vim-emoji
       * purify theme   
 
-![nvim-img](img/nvim.png)   
+![nvim-img](img/nvim-new.png)   
   
    I used vim-plug to install the plugins
 
