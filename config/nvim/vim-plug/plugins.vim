@@ -19,6 +19,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'posva/vim-vue'
     Plug 'yuezk/vim-js'
     Plug 'maxmellon/vim-jsx-pretty'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
     Plug 'leafgarland/typescript-vim'
 
     Plug 'prettier/vim-prettier', {
@@ -27,14 +29,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     Plug 'kyoz/purify', { 'rtp': 'vim' }
     Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-    Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'vim-airline/vim-airline-themes'
     Plug 'spolu/dwm.vim'
     Plug 'neovim/nvim-lspconfig'
-    Plug 'glepnir/lspsaga.nvim'
+    Plug 'tami5/lspsaga.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-lua/popup.nvim'

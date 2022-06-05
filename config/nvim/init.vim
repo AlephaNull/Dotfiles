@@ -72,6 +72,9 @@ set tabstop=2
 set shiftwidth=2
 set nocindent
 
+" For .vue development
+autocmd BufRead,BufNewFile *.vue setfiletype html
+
 " Speed optimization
 set ttyfast
 set lazyredraw
