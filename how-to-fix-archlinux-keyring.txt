@@ -1,0 +1,5 @@
+https://archived.forum.manjaro.org/t/error-failed-to-commit-transaction-invalid-or-corrupted-package-pgp-signature-errors-occurred-no-packages-were-upgraded/112792/2
+  sudo pacman-key --refresh-keys
+  find all keys with corruptions
+  sudo pacman-key --delete [keyID]
+  sudo pacman-key --populate archlinux arcolinux
