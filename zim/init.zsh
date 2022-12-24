@@ -1,0 +1,18 @@
+zimfw() { source /home/alephanull/.zim/zimfw.zsh "${@}" }
+zmodule() { source /home/alephanull/.zim/zimfw.zsh "${@}" }
+typeset -gr _zim_fpath=(/home/alephanull/.zim/modules/git/functions /home/alephanull/.zim/modules/utility/functions /home/alephanull/.zim/modules/prompt-pwd/functions /home/alephanull/.zim/modules/pacman/functions /home/alephanull/.zim/modules/zim-starship/functions /home/alephanull/.zim/modules/duration-info/functions /home/alephanull/.zim/modules/git-info/functions /home/alephanull/.zim/modules/zsh-completions/src)
+fpath=(${_zim_fpath} ${fpath})
+autoload -Uz -- git-alias-lookup git-branch-current git-branch-delete-interactive git-branch-remote-tracking git-dir git-ignore-add git-root git-stash-clear-interactive git-stash-recover git-submodule-move git-submodule-remove mkcd mkpw prompt-pwd duration-info-precmd duration-info-preexec coalesce git-action git-info
+source /home/alephanull/.zim/modules/environment/init.zsh
+source /home/alephanull/.zim/modules/git/init.zsh
+source /home/alephanull/.zim/modules/input/init.zsh
+source /home/alephanull/.zim/modules/termtitle/init.zsh
+source /home/alephanull/.zim/modules/utility/init.zsh
+source /home/alephanull/.zim/modules/pacman/init.zsh
+source /home/alephanull/.zim/modules/zim-starship/init.zsh
+source /home/alephanull/.zim/modules/duration-info/init.zsh
+source /home/alephanull/.zim/modules/sorin/sorin.zsh-theme
+source /home/alephanull/.zim/modules/completion/init.zsh
+source /home/alephanull/.zim/modules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/alephanull/.zim/modules/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /home/alephanull/.zim/modules/zsh-autosuggestions/zsh-autosuggestions.zsh
